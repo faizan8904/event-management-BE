@@ -58,4 +58,16 @@ export class UsersService {
         }
     }
 
+    async findUserByEmail(emaill:string){
+        try {
+            return this.prismaService.user.findUnique({
+                where:{
+                    email:emaill
+                }
+            })
+        } catch (error) {
+            throw new BadRequestException(error)
+        }
+    }
+
 }
